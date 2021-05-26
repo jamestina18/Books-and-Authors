@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=
+     , initial-scale=1.0">
+     <title>Books & Authors</title>
+</head>
+<body>
+     <h1>Add Author</h1>
+     <form action="/add-user"method="post" >
+          {% csrf_token %}
+          <input type="text" name="first_name">
+          <input type="text" name="last_name">
+          <button>Submit</button>
+     </form>
+
+     <h1>List</h1>
+     {% for author in authors %}
+          <h2> {{ author.first_name }} {{ author.last_name }} id: {{ author.id }}</h2>
+     {% endfor %}
+</body>
+</html>

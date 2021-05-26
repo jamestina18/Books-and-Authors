@@ -1,0 +1,97 @@
+//create 5 books
+c_sharp = Book.objects.create(title = "C Sharp", desc = "Is a general pupose programming language. Developed by microsoft in 2000.")
+>> c_sharp = Book.objects.get(id=1)
+java = Book.objects.create(title = "Java", desc = "Is s high level class-based, OOP.Genaral purpose language.")
+>> java = Book.objects.get(id=2)
+python = Book.objects.create(title = "Python", desc = "Is an interpreted high-level general- purpose programming language. Design philosophy emphasizes code readability")
+>> python = Book.objects.get(id=3)
+php = Book.objects.create(title = "PHP", desc = "General purpose scripting language specially suited for web developement")
+>> php = Book.objects.get(id=4)
+ruby = Book.objects.create(title = "Ruby", desc = "Is an interpreted high-level general purpose programming language")
+>> ruby = Book.objects.get(id=5)
+
+//create 5 different authors
+jane = Author.objects.create(first_name = "Jane", last_name= "Austen")
+>> jane = Author.objects.get(id=1)
+emily = Author.objects.create(first_name = "Emily", last_name= "Dickinson")
+>> emily = Author.objects.get(id=2)
+fyodor = Author.objects.create(first_name = "Fyodor", last_name= "Dostoevsky")
+>> fyodor = Author.objects.get(id=3)
+william = Author.objects.create(first_name = "William", last_name= "Shakespeare")
+>> william = Author.objects.get(id=4)
+lau = Author.objects.create(first_name = "Lau", last_name= "Tzu")
+>> lau = Author.objects.get(id=5)
+
+// Change the name of C Sharp to C#
+c.Book.objects.get(id=1)
+c.title="C#"
+c.save()java
+// Change the first name of the 4th author to Bill
+william.first_name = 'Bill'
+william.save()
+
+//Assign the first author to the first 2 books
+c_sharp.authors.add(jane)
+java.authors.add(jane)
+jane.save()
+
+//assign the second author to the first 3 books
+c_sharp.authors.add(emily)
+java.authors.add(emily)
+python.authors.add(emily)
+emily.save()
+
+//Assign the third author to the first 4 books
+c_sharp.authors.add(fyodor)
+java.authors.add(fyodor)
+python.authors.add(fyodor)
+php.authors.add(fyodor)
+fyodor.save()
+
+//Assign the fourth author to the first 5 books (or in other words, all the books)
+c_sharp.authors.add(william)
+java.authors.add(william)
+python.authors.add(william)
+php.authors.add(william)
+ruby.authors.add(william)
+william.save()
+william.books.all()
+
+//Retrieve all the authors for the 3rd book
+python.authors.all()
+
+//Remove the first author of the 3rd book
+python.authors.remove(jane)
+
+// Add the 5th author as one of the authors of the 2nd book
+java.authors.add(lau)
+lau.save()
+
+// Find all the books that the 3rd author is part of
+fyodor.books.all()
+
+//Find all the authors that contributed to the 5th book
+ruby.authors.all()
+
+
+
+
+////***************************************
+git 
+…or create a new repository on the command line
+echo "# Books-and-Authors" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/jamestina18/Books-and-Authors.git
+git push -u origin main
+
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/jamestina18/Books-and-Authors.git
+git branch -M main
+git push -u origin main
+
+
+
