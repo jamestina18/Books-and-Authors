@@ -8,7 +8,7 @@ class Book(models.Model):
      updated_at = models.DateTimeField(auto_now=True)
 
      def __str__ (self):
-          return f"{self.title}"
+          return f"{self.title} {self.desc}"
 
 class Author (models.Model):
      first_name = models.CharField(max_length=45)
@@ -19,4 +19,4 @@ class Author (models.Model):
      notes = models.TextField(default="")
 
      def __str__ (self):
-          return f"{self.first_name} {self.last_name} {self.books}"
+          return f"{self.first_name} {self.last_name}"

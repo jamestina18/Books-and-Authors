@@ -3,22 +3,48 @@
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=
-     , initial-scale=1.0">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+     {% load static %}
+     <link rel="stylesheet" href="{% static 'style.css'%}">
      <title>Books & Authors</title>
 </head>
 <body>
-     <h1>Add Author</h1>
-     <form action="/add-user"method="post" >
-          {% csrf_token %}
-          <input type="text" name="first_name">
-          <input type="text" name="last_name">
-          <button>Submit</button>
-     </form>
+ <div class="container">
+     <h1>Add a Book</h1>
+     <section class="split-screen">
+          <form action="/add-book" method="POST">
+               {% csrf_token %}
+               <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" name = "title" class="form-control"/>
+               </div>
+               <div class="form-group">
+                    <label for="desc">Description</label>
+                    <textarea name="desc" id="desc" class="form-control" cols="30" rows="10"></textarea>
+               </div>
+               <Button class="btn btn-primary">ADD</Button>
+          </form>
 
-     <h1>List</h1>
-     {% for author in authors %}
-          <h2> {{ author.first_name }} {{ author.last_name }} id: {{ author.id }}</h2>
-     {% endfor %}
+          <table class="table table-dark">
+               <thead>
+                    <tr>
+                         <th>Id</th>
+                         <th>Title</th>
+                         <th>Action</th>
+                    </tr>
+               </thead>
+               <tbody>
+               {% for book in books %}
+                    <tr>
+                         <td>{{ book.id }}</td>
+                         <td>{{ book.title }}</td>
+                         <td><a href="/add-book/{{ book.id }}">VIEW Here!</a></td>
+                    </tr>
+               {% endfor %}
+               </tbody>  
+          </table>
+     </section>
+ </div>
 </body>
 </html>
